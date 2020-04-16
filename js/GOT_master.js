@@ -1,14 +1,14 @@
 (() => {
   // variable stack here -> the elements you want to interact with
-  let sigilButtons = document.querySelectorAll(".sigilContainer"),
-      lightBox = document.querySelector(".lightbox"),
-      houseVideo = lightBox.querySelector("video"),
-      closeButton = lightBox.querySelector(".close-button"),
-      currentHouseName = document.querySelector("h1"),
-      houseDescription = document.querySelector(".house-info"),
-      imageContainer = document.querySelector("#houseImages");
-      playButton = document.querySelector('.play-button'),
-      rewindButton = document.querySelector('.rewind-button');
+let sigilButtons = document.querySelectorAll(".sigilContainer"),
+    lightBox = document.querySelector('.lightbox'),
+    houseVideo = lightBox.querySelector("video"),
+    closeButton = lightBox.querySelector('.close-button'),
+    currenthouseName = document.querySelector("h1"),
+    houseDescription = document.querySelector(".house-info"),
+    imageContainer = document.querySelector('#houseImages'),
+    playButton = document.querySelector('.play-button'),
+    rewindButton = document.querySelector('.rewind-button');
 
 
   const houseData = [
@@ -50,7 +50,10 @@
     Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms from House Lannister, who formally 
     replaced House Baratheon as the royal House following the destruction of the Great Sept of Baelor.`],
 
-    ["Tyrell", ``],
+    ["Tyrell", `House Tyrell of Highgarden is one of the Great Houses of the Seven Kingdoms, being Lords Paramount of the Mander and the liege 
+    lords of the Reach. A large, wealthy house, its wealth is only surpassed among the Great Houses by House Lannister, and theTyrells can field 
+    the greatest armies. Additionally, if they call the ships of the Redwyne fleet, the lords of the Shield Islands, and the coastal lords, they 
+    can command a navy that equals if not surpasses the royal fleet of King's Landing. `],
 
     ["Frey", `House Frey of the Twins was the Great House of the Riverlands, having gained their position for their treachery against their 
     former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully 
@@ -70,7 +73,7 @@
     let newSource = houseName.charAt(0).toUpperCase() + houseName.slice(1);
 
     // use this variable to populate the h1 element onthe page
-    currentHouseName.textContent = `House ${houseData[this.dataset.offset][0]}`;
+    currenthouseName.textContent = `House ${houseData[this.dataset.offset][0]}`;
 
     // this variable is pointing at the paragraph tag under the h1 -> this is the house description
     houseDescription.textContent = `${houseData[this.dataset.offset][1]}`;
@@ -92,54 +95,49 @@
     houseVideo.play();
   }
 
-  function hidelightBox() {
+  function hideLightBox() {
     lightBox.classList.remove("show-lightbox");
-  }
-
    // stop and rewind the lightbox video when it closes
     houseVideo.pause();
     houseVideo.currentTime = 0;
   }
 
-    function animateBanners() {
-      // clicking on the shield should trigger an animation
-      // figure out how far the banners should move with some simple math
+  function animateBanners() {
+    // clicking on the shield should trigger an animation
+    // figure out how far the banners should move with some simple math
+    let offsetWidth = 600;
+    let multiplier = this.dataset.offset;
+    let newPosition = offsetWidth * multiplier;
+    //debugger;
+    // change the style.left property to match the new position - where it needs to move to
+    imageContainer.style.right = `${newPosition}px`;
+    currenthouseName.textContent = `House ${houseData[multiplier][0]}`;
+    houseDescription.textContent = houseData[multiplier][1];
+  }
 
-      let offsetWidth = 600;
-      let multiplier = this.dataset.offset;
-      let newPosition = offsetWidth * multiplier;
+  function PlayandPause() {
+    if(houseVideo.paused)
+      houseVideo.play();
+    else
+      houseVideo.pause();
+  }
 
-      //debugger;
-      // change the style.left property to match the new position - where it needs to move to
-
-      imageContainer.style.right = `${newPosition}px`;
-      currentHouseName.textContent = `House ${houseData[multiplier][0]}`;
-      houseDescription.textContent = houseData[multiplier][1];
-    }
-
-function PlayandPause() {
-  if(houseVideo.paused)
-    houseVideo.play();
-  else
-    houseVideo.pause();
-}
-
-function rewindVideo() {
-  houseVideo.currentTime = 0;
-}
+  function rewindVideo() {
+    houseVideo.currentTime = 0;
+  }
 
   // event handling for our sigilButtons
   sigilButtons.forEach(button => button.addEventListener("click", showLightBox));
 
-// animate the banners on a click
+  // animate the banners on a click
   sigilButtons.forEach(button => button.addEventListener("click", animateBanners));
 
   houseVideo.addEventListener('ended',hideLightBox);
 
-  closeButton.addEventListener("click", hidelightBox);
+  closeButton.addEventListener("click", hideLightBox);
 
-  playButton.addEventListerner("click", PlayandPause);
+  playButton.addEventListener("click", PlayandPause);
 
-  rewinButton.addEventListener("click", rewindVideo);
+  rewindButton.addEventListener("click", rewindVideo);
 
 })();

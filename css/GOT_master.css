@@ -10,51 +10,55 @@
 /* ----- end custom font ----- */
 
 /* ----- default styles ----- */
-body { background-image:url(../images/grungeBG.jpg);
-	background-repeat:no-repeat; background-position:center center;
-	background-color:#000000; font-size:16px; }
+body { 
+	background-image: url(../images/grungeBG.jpg);
+	background-repeat: no-repeat; 
+	background-position:center center;
+	background-color: #000000; 
+	font-size:16px; 
+}
 
 h1 {
 	font-family: 'GOT_font';
-	color:white;
-	margin-top:30px;
-	font-size:1.25em;
+	color: white;
+	margin-top: 30px;
+	font-size: 1.25em;
 }
 
 main {
-	position:relative;
-	width:100%;
-	text-align:center;
-	top:30px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	top: 30px;
 }
 
 #imageContainer {
-	width:600px;
-	height:360px;
-	background-color:grey;
-	margin:0 auto;
-	overflow:hidden;
+	width: 600px;
+	height: 360px;
+	background-color: grey;
+	margin: 0 auto;
+	overflow: hidden;
 }
 
 #houseImages { 
-	position:relative; 
-	width:6000px; 
+	position: relative; 
+	width: 6000px; 
 	transition: all .5s; 
 }
 
 #houseImages img { 
-	float:left; 
+	float: left; 
 }
 
 #bottomNav { 
-	margin-top:30px; 
+	margin-top: 30px; 
 }
 
 #navList li {
-	display:inline;
-	list-style-type:none;
-	padding:0px 10px;
-	cursor:pointer;
+	display: inline;
+	list-style-type: none;
+	padding: 0px 10px;
+	cursor: pointer;
 }
 
 /* ----- end default styles ----- */
@@ -155,6 +159,14 @@ main {
   font-size: 2em;
   cursor: pointer;
 }
+
+button{
+	position: relative;
+    padding: 10px;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
 
 video {
 	width: 80%;
