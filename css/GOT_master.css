@@ -154,6 +154,12 @@ main {
   	margin-left: 1em;
 }
 
+.pause-button {
+ 	color: white;
+ 	font-size: 2em;
+  	cursor: pointer;
+}
+
 .rewind-button {
   	color: white;
   	font-size: 2em;
@@ -162,6 +168,7 @@ main {
 
 button{
 	position: relative;
+	width: 80px;
 	padding: 0.7em;
 	margin-left: 10px;
 	border-radius: 5px;
@@ -182,4 +189,6 @@ video {
   	line-height: 1.5;
   	width: 70%;
   	margin: 5% 10%;
+  	text-align: center;
+  	margin: 0 auto; 
 }

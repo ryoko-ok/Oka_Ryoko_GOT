@@ -8,6 +8,7 @@ let sigilButtons = document.querySelectorAll(".sigilContainer"),
     houseDescription = document.querySelector(".house-info"),
     imageContainer = document.querySelector('#houseImages'),
     playButton = document.querySelector('.play-button'),
+    pauseButton = document.querySelector('.pause-button'),
     rewindButton = document.querySelector('.rewind-button');
 
 
@@ -98,6 +99,7 @@ let sigilButtons = document.querySelectorAll(".sigilContainer"),
   function hideLightBox() {
     lightBox.classList.remove("show-lightbox");
    // stop and rewind the lightbox video when it closes
+    houseVideo.play();
     houseVideo.pause();
     houseVideo.currentTime = 0;
   }
@@ -115,10 +117,11 @@ let sigilButtons = document.querySelectorAll(".sigilContainer"),
     houseDescription.textContent = houseData[multiplier][1];
   }
 
-  function PlayandPause() {
-    if(houseVideo.paused)
+  function playVideo() {
       houseVideo.play();
-    else
+  }
+
+  function pauseVideo() {
       houseVideo.pause();
   }
 
@@ -136,7 +139,9 @@ let sigilButtons = document.querySelectorAll(".sigilContainer"),
 
   closeButton.addEventListener("click", hideLightBox);
 
-  playButton.addEventListener("click", PlayandPause);
+  playButton.addEventListener("click", playVideo);
+
+  pauseButton.addEventListener("click", pauseVideo);
 
   rewindButton.addEventListener("click", rewindVideo);
 
